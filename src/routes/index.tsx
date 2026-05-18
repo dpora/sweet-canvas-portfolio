@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowRight, Instagram, Mail, Send } from "lucide-react";
-import heroImg from "@/assets/hero-dessert.jpg";
+import { Instagram, Mail, Send } from "lucide-react";
 import headshotImg from "@/assets/headshot.jpg";
 import { projects, type Project } from "@/components/portfolio/projects";
 import { ProjectDialog } from "@/components/portfolio/ProjectDialog";
@@ -14,7 +13,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Portfolio of Élise Moreau, pastry chef and graduate of the Culinary Institute of America. Plated desserts, viennoiserie, and celebration cakes.",
+          "Portfolio of Élise Moreau, pastry chef. Plated desserts, viennoiserie, and celebration cakes.",
       },
     ],
   }),
@@ -22,247 +21,147 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const [active, setActive] = useState<Project | null>(null);
-
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
+  const [contactOpen, setContactOpen] = useState(false);
 
   return (
-    <main className="min-h-screen bg-background text-foreground">
-      {/* Nav */}
-      <nav className="fixed top-0 inset-x-0 z-40 backdrop-blur-md bg-background/70 border-b border-border/50">
-        <div className="max-w-[1600px] mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
-          <a href="#top" className="text-sm tracking-[0.25em] uppercase font-medium">
-            Élise<span className="text-accent">.</span>Moreau
-          </a>
-          <div className="hidden md:flex items-center gap-10 text-xs uppercase tracking-[0.2em]">
-            <button onClick={() => scrollTo("work")} className="hover:text-accent transition-colors">Work</button>
-            <button onClick={() => scrollTo("about")} className="hover:text-accent transition-colors">About</button>
-            <button onClick={() => scrollTo("contact")} className="hover:text-accent transition-colors">Contact</button>
+    <main className="h-screen w-screen overflow-hidden bg-secondary text-foreground p-3 md:p-4 flex flex-col">
+      <div className="flex-1 grid grid-cols-12 grid-rows-6 gap-3 md:gap-4 min-h-0">
+        {/* Profile card */}
+        <section className="col-span-12 md:col-span-3 row-span-2 md:row-span-3 bg-background rounded-2xl p-4 md:p-5 flex flex-col gap-3 shadow-sm">
+          <div className="flex-1 min-h-0 overflow-hidden rounded-xl bg-muted">
+            <img
+              src={headshotImg}
+              alt="Élise Moreau"
+              className="w-full h-full object-cover"
+            />
           </div>
-        </div>
-      </nav>
-
-      {/* Hero */}
-      <section id="top" className="relative min-h-screen flex items-end bg-foreground text-background overflow-hidden">
-        <img
-          src={heroImg}
-          alt="Signature chocolate dome with gold leaf"
-          width={1920}
-          height={1280}
-          className="absolute inset-0 w-full h-full object-cover opacity-70"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/40 to-foreground/30" />
-
-        <div className="relative z-10 w-full max-w-[1600px] mx-auto px-6 md:px-12 pb-20 pt-32">
-          <div className="max-w-4xl animate-fade-up">
-            <p className="eyebrow text-accent mb-8">Pastry Chef · Portfolio 2024</p>
-            <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl leading-[0.95] mb-8">
-              The quiet<br />
-              architecture<br />
-              <em className="text-accent not-italic">of dessert.</em>
+          <div>
+            <p className="eyebrow text-muted-foreground mb-1">Pastry Chef</p>
+            <h1 className="text-xl md:text-2xl font-display leading-tight">
+              Élise Moreau
             </h1>
-            <p className="text-base md:text-lg max-w-xl text-background/80 leading-relaxed mb-10">
-              Élise Moreau — a pastry chef trained at the Culinary Institute of America,
-              composing plated desserts and viennoiserie with restraint, precision, and seasonal ingredient.
-            </p>
-            <button
-              onClick={() => scrollTo("work")}
-              className="group inline-flex items-center gap-4 bg-background text-foreground px-8 py-4 text-xs uppercase tracking-[0.25em] font-medium hover:bg-accent hover:text-foreground transition-colors"
-            >
-              View My Work
-              <ArrowRight className="size-4 group-hover:translate-x-1 transition-transform" />
-            </button>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* About */}
-      <section id="about" className="py-24 md:py-40">
-        <div className="max-w-[1600px] mx-auto px-6 md:px-12 grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
-          <div className="lg:col-span-5">
-            <div className="aspect-[4/5] overflow-hidden bg-muted">
-              <img
-                src={headshotImg}
-                alt="Portrait of Élise Moreau"
-                loading="lazy"
-                width={1024}
-                height={1280}
-                className="w-full h-full object-cover"
-              />
-            </div>
+        {/* Info section */}
+        <section className="col-span-12 md:col-span-3 row-span-2 md:row-span-3 bg-background rounded-2xl p-5 md:p-6 flex flex-col gap-3 shadow-sm overflow-hidden">
+          <p className="eyebrow text-accent">About</p>
+          <h2 className="text-lg md:text-xl font-display leading-snug">
+            The quiet architecture of dessert.
+          </h2>
+          <p className="text-xs md:text-sm text-muted-foreground leading-relaxed overflow-hidden">
+            CIA graduate, 2019. Trained across Michelin kitchens in Brooklyn,
+            Copenhagen, and Paris. Plated desserts and contemporary
+            viennoiserie, built around peak-season ingredients.
+          </p>
+          <div className="mt-auto grid grid-cols-3 gap-2 border-t border-border pt-3">
+            <Stat n="07" l="Years" />
+            <Stat n="48" l="Projects" />
+            <Stat n="12" l="Kitchens" />
           </div>
-          <div className="lg:col-span-6 lg:col-start-7">
-            <p className="eyebrow text-accent mb-6">About</p>
-            <h2 className="text-4xl md:text-6xl leading-tight mb-8">
-              Discipline of the
-              <br />
-              <em className="not-italic text-muted-foreground">sweet course.</em>
-            </h2>
-            <div className="space-y-5 text-muted-foreground leading-relaxed max-w-xl">
-              <p>
-                I am a pastry chef based between New York and Paris. My work begins with
-                a single ingredient — a peak-season fruit, a particular cocoa, a wild
-                honey — and is built outward with the precision the craft demands.
-              </p>
-              <p>
-                I graduated from the <span className="text-foreground">Culinary Institute of America</span> in
-                2019 and have since worked across Michelin-starred kitchens in
-                Brooklyn, Copenhagen, and the 7e arrondissement, focusing on plated
-                desserts and contemporary viennoiserie.
-              </p>
-              <p>
-                The portfolio that follows is a selection of recent projects — private
-                commissions, restaurant menus, and personal studies.
-              </p>
-            </div>
-            <div className="mt-12 grid grid-cols-3 gap-8 border-t border-border pt-8">
-              <div>
-                <p className="text-3xl font-display">07</p>
-                <p className="eyebrow text-muted-foreground mt-2">Years</p>
-              </div>
-              <div>
-                <p className="text-3xl font-display">48</p>
-                <p className="eyebrow text-muted-foreground mt-2">Projects</p>
-              </div>
-              <div>
-                <p className="text-3xl font-display">12</p>
-                <p className="eyebrow text-muted-foreground mt-2">Kitchens</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Portfolio */}
-      <section id="work" className="py-24 md:py-32 bg-secondary">
-        <div className="max-w-[1600px] mx-auto px-6 md:px-12">
-          <div className="flex items-end justify-between mb-16 md:mb-20 gap-8 flex-wrap">
-            <div>
-              <p className="eyebrow text-accent mb-4">Selected Work</p>
-              <h2 className="text-4xl md:text-6xl leading-tight max-w-2xl">
-                A catalogue of recent compositions.
-              </h2>
-            </div>
-            <p className="text-sm text-muted-foreground max-w-xs">
-              Each piece is a study in balance — texture, temperature, and seasonality.
-              Select any project for detail.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-3">
+        {/* Projects grid — the main focus */}
+        <section className="col-span-12 md:col-span-9 row-span-4 md:row-span-6 md:col-start-4 md:row-start-1 bg-background rounded-2xl p-3 md:p-5 shadow-sm">
+          <div className="h-full grid grid-cols-3 grid-rows-2 gap-3 md:gap-4">
             {projects.map((p, i) => (
               <button
                 key={p.id}
                 onClick={() => setActive(p)}
-                className="group relative aspect-square overflow-hidden bg-foreground text-left"
+                className="group relative overflow-hidden rounded-xl bg-muted text-left"
               >
                 <img
                   src={p.image}
                   alt={p.title}
                   loading="lazy"
-                  width={1200}
-                  height={1200}
-                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 group-hover:opacity-60"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8 bg-gradient-to-t from-foreground/90 via-foreground/0 to-foreground/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <p className="eyebrow text-background/70 mb-2">
-                    {String(i + 1).padStart(2, "0")} — {p.category}
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/85 via-foreground/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-x-0 bottom-0 p-3 md:p-4 translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                  <p className="eyebrow text-background/70 mb-1 text-[10px]">
+                    {String(i + 1).padStart(2, "0")} · {p.category}
                   </p>
-                  <h3 className="text-2xl md:text-3xl text-background mb-3">{p.title}</h3>
-                  <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-accent">
-                    View Project <ArrowRight className="size-3" />
-                  </span>
-                </div>
-                <div className="absolute top-4 left-4 size-8 flex items-center justify-center bg-background/0 text-background/0 group-hover:bg-accent group-hover:text-foreground transition-all duration-500 text-xs font-medium">
-                  {String(i + 1).padStart(2, "0")}
+                  <h3 className="text-sm md:text-base text-background font-display leading-tight">
+                    {p.title}
+                  </h3>
                 </div>
               </button>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Contact / Footer */}
-      <footer id="contact" className="bg-foreground text-background pt-24 md:pt-32 pb-10">
-        <div className="max-w-[1600px] mx-auto px-6 md:px-12">
-          <div className="grid lg:grid-cols-12 gap-16 lg:gap-20 pb-20 border-b border-background/10">
-            <div className="lg:col-span-5">
-              <p className="eyebrow text-accent mb-6">Contact</p>
-              <h2 className="text-4xl md:text-6xl leading-tight mb-8">
-                Commission a<br />project.
-              </h2>
-              <p className="text-background/70 leading-relaxed mb-10 max-w-md">
-                Currently accepting select commissions for private events, restaurant
-                menu development, and editorial collaborations.
-              </p>
-              <a
-                href="mailto:hello@elisemoreau.com"
-                className="inline-flex items-center gap-3 text-lg border-b border-background/30 pb-1 hover:text-accent hover:border-accent transition-colors"
-              >
-                <Mail className="size-4" />
-                hello@elisemoreau.com
-              </a>
-            </div>
-
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                alert("Thank you. I will be in touch shortly.");
-              }}
-              className="lg:col-span-6 lg:col-start-7 space-y-6"
+        {/* Contact bar */}
+        <section className="col-span-8 md:col-span-6 row-span-1 bg-background rounded-2xl px-5 py-3 md:py-4 shadow-sm flex items-center justify-between gap-4 md:col-start-1 md:row-start-7 hidden md:flex">
+          <div className="min-w-0">
+            <p className="eyebrow text-accent mb-0.5 text-[10px]">Contact</p>
+            <a
+              href="mailto:hello@elisemoreau.com"
+              className="text-sm md:text-base font-display hover:text-accent transition-colors truncate block"
             >
-              <div className="grid sm:grid-cols-2 gap-6">
-                <Field label="Name" name="name" />
-                <Field label="Email" name="email" type="email" />
-              </div>
-              <Field label="Subject" name="subject" />
-              <div>
-                <label className="eyebrow text-background/50 mb-3 block">Message</label>
-                <textarea
-                  name="message"
-                  required
-                  maxLength={1000}
-                  rows={4}
-                  className="w-full bg-transparent border-b border-background/20 py-3 focus:outline-none focus:border-accent transition-colors resize-none"
-                />
-              </div>
-              <button
-                type="submit"
-                className="group inline-flex items-center gap-4 bg-background text-foreground px-8 py-4 text-xs uppercase tracking-[0.25em] font-medium hover:bg-accent transition-colors"
-              >
-                Send Inquiry
-                <Send className="size-3.5 group-hover:translate-x-1 transition-transform" />
-              </button>
-            </form>
+              hello@elisemoreau.com
+            </a>
           </div>
+          <button
+            onClick={() => setContactOpen(true)}
+            className="shrink-0 inline-flex items-center gap-2 bg-foreground text-background px-4 py-2 rounded-full text-[10px] uppercase tracking-[0.2em] hover:bg-accent hover:text-foreground transition-colors"
+          >
+            Inquire <Send className="size-3" />
+          </button>
+        </section>
 
-          <div className="flex flex-wrap items-center justify-between gap-6 pt-10 text-xs uppercase tracking-[0.2em] text-background/50">
-            <p>© 2024 Élise Moreau — All rights reserved.</p>
-            <div className="flex items-center gap-5">
-              <a href="#" aria-label="Instagram" className="hover:text-accent transition-colors"><Instagram className="size-4" /></a>
-              <a href="mailto:hello@elisemoreau.com" aria-label="Email" className="hover:text-accent transition-colors"><Mail className="size-4" /></a>
-            </div>
+        {/* Footer card */}
+        <section className="col-span-4 md:col-span-3 row-span-1 bg-background rounded-2xl px-5 py-3 md:py-4 shadow-sm flex items-center justify-between md:col-start-10 md:row-start-7 hidden md:flex">
+          <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+            © 2024
+          </p>
+          <div className="flex items-center gap-3">
+            <a href="#" aria-label="Instagram" className="hover:text-accent transition-colors">
+              <Instagram className="size-4" />
+            </a>
+            <a href="mailto:hello@elisemoreau.com" aria-label="Email" className="hover:text-accent transition-colors">
+              <Mail className="size-4" />
+            </a>
           </div>
-        </div>
-      </footer>
+        </section>
+      </div>
 
       <ProjectDialog project={active} onClose={() => setActive(null)} />
+
+      {contactOpen && (
+        <div
+          className="fixed inset-0 z-50 bg-foreground/60 backdrop-blur-sm flex items-center justify-center p-4"
+          onClick={() => setContactOpen(false)}
+        >
+          <form
+            onClick={(e) => e.stopPropagation()}
+            onSubmit={(e) => {
+              e.preventDefault();
+              setContactOpen(false);
+            }}
+            className="bg-background rounded-2xl p-6 md:p-8 w-full max-w-md space-y-4 shadow-xl"
+          >
+            <div>
+              <p className="eyebrow text-accent mb-2">Contact</p>
+              <h3 className="text-2xl font-display">Commission a project.</h3>
+            </div>
+            <input required name="name" placeholder="Name" className="w-full bg-transparent border-b border-border py-2 focus:outline-none focus:border-accent text-sm" />
+            <input required type="email" name="email" placeholder="Email" className="w-full bg-transparent border-b border-border py-2 focus:outline-none focus:border-accent text-sm" />
+            <textarea required name="message" rows={3} placeholder="Message" className="w-full bg-transparent border-b border-border py-2 focus:outline-none focus:border-accent resize-none text-sm" />
+            <button type="submit" className="w-full bg-foreground text-background py-3 rounded-full text-xs uppercase tracking-[0.2em] hover:bg-accent hover:text-foreground transition-colors">
+              Send Inquiry
+            </button>
+          </form>
+        </div>
+      )}
     </main>
   );
 }
 
-function Field({ label, name, type = "text" }: { label: string; name: string; type?: string }) {
+function Stat({ n, l }: { n: string; l: string }) {
   return (
     <div>
-      <label className="eyebrow text-background/50 mb-3 block">{label}</label>
-      <input
-        name={name}
-        type={type}
-        required
-        maxLength={255}
-        className="w-full bg-transparent border-b border-background/20 py-3 focus:outline-none focus:border-accent transition-colors"
-      />
+      <p className="text-lg md:text-xl font-display">{n}</p>
+      <p className="eyebrow text-muted-foreground mt-0.5 text-[10px]">{l}</p>
     </div>
   );
 }
