@@ -83,4 +83,59 @@ export const projects: Project[] = [
     technique: "Sablé Breton · Quenelle · Cold plating contrast.",
     gallery: [p6, p1, p2],
   },
+  {
+    id: "paris-brest",
+    title: "Paris-Brest Noisette",
+    category: "Classique · 2024",
+    image: p2,
+    description:
+      "A modern Paris-Brest piped with Piedmont hazelnut praliné mousseline, finished with cracked caramelised hazelnuts and a craquelin choux ring.",
+    flavor: "Hazelnut praliné, brown butter, caramel.",
+    technique: "Craquelin choux · Praliné mousseline.",
+    gallery: [p2, p4, p3],
+  },
+  {
+    id: "mille-feuille",
+    title: "Vanilla Mille-Feuille",
+    category: "Plated Dessert · 2024",
+    image: p3,
+    description:
+      "Inverse puff pastry caramelised between plates, layered with Madagascar vanilla diplomat cream and a thin fondant glaze marbled in dark chocolate.",
+    flavor: "Madagascar vanilla, caramelised butter, dark chocolate.",
+    technique: "Inverse puff · Diplomat cream · Fondant marbling.",
+    gallery: [p3, p1, p6],
+  },
+  {
+    id: "tarte-fraise",
+    title: "Tarte aux Fraises",
+    category: "Seasonal · 2024",
+    image: p1,
+    description:
+      "Sweet pâte sucrée filled with almond crémeux and topped with hand-placed Gariguette strawberries glazed in a light hibiscus jelly.",
+    flavor: "Gariguette strawberry, almond, hibiscus.",
+    technique: "Pâte sucrée · Almond crémeux · Mirror jelly.",
+    gallery: [p1, p6, p5],
+  },
+  {
+    id: "opera",
+    title: "Opéra Cake",
+    category: "Classique · 2023",
+    image: p4,
+    description:
+      "Seven thin layers of almond joconde soaked in espresso, alternating with coffee buttercream and dark chocolate ganache, finished with a glossy chocolate glaze.",
+    flavor: "Espresso, dark chocolate, toasted almond.",
+    technique: "Joconde sponge · Layered assembly · Mirror glaze.",
+    gallery: [p4, p2, p6],
+  },
+  {
+    id: "saint-honore",
+    title: "Saint-Honoré",
+    category: "Composed Dessert · 2024",
+    image: p5,
+    description:
+      "Caramel-dipped choux puffs arranged on a puff pastry disc, piped with Chantilly vanilla and decorated with spun sugar.",
+    flavor: "Vanilla Chantilly, caramel, butter pastry.",
+    technique: "Pâte feuilletée · Caramel dip · Saint-Honoré tip.",
+    gallery: [p5, p3, p2],
+  },
 ];
