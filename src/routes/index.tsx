@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Instagram, Mail, Send } from "lucide-react";
+import { Instagram, Mail, Send, ChevronLeft, ChevronRight } from "lucide-react";
 import headshotImg from "@/assets/headshot.jpg";
 import { projects, type Project } from "@/components/portfolio/projects";
 import { ProjectDialog } from "@/components/portfolio/ProjectDialog";
@@ -19,16 +19,22 @@ export const Route = createFileRoute("/")({
   }),
 });
 
+const PAGE_SIZE = 6;
+
 function Index() {
   const [active, setActive] = useState<Project | null>(null);
   const [contactOpen, setContactOpen] = useState(false);
+  const [page, setPage] = useState(0);
+
+  const totalPages = Math.ceil(projects.length / PAGE_SIZE);
+  const pageProjects = projects.slice(page * PAGE_SIZE, page * PAGE_SIZE + PAGE_SIZE);
 
   return (
-    <main className="h-screen w-screen overflow-hidden bg-secondary text-foreground p-3 md:p-4 flex flex-col">
-      <div className="flex-1 grid grid-cols-12 grid-rows-6 gap-3 md:gap-4 min-h-0">
+    <main className="md:h-screen w-screen md:overflow-hidden bg-secondary text-foreground p-3 md:p-4 flex flex-col min-h-screen">
+      <div className="flex-1 grid grid-cols-12 md:grid-rows-7 gap-3 md:gap-4 md:min-h-0">
         {/* Profile card */}
-        <section className="col-span-12 md:col-span-3 row-span-2 md:row-span-3 bg-background rounded-2xl p-4 md:p-5 flex flex-col gap-3 shadow-sm">
-          <div className="flex-1 min-h-0 overflow-hidden rounded-xl bg-muted">
+        <section className="col-span-12 md:col-span-3 md:row-span-3 bg-background rounded-2xl p-4 md:p-5 flex flex-col gap-3 shadow-sm">
+          <div className="h-48 md:flex-1 md:h-auto min-h-0 overflow-hidden rounded-xl bg-muted">
             <img
               src={headshotImg}
               alt="Élise Moreau"
@@ -43,16 +49,21 @@ function Index() {
           </div>
         </section>
 
-        {/* Info section */}
-        <section className="col-span-12 md:col-span-3 row-span-2 md:row-span-3 bg-background rounded-2xl p-5 md:p-6 flex flex-col gap-3 shadow-sm overflow-hidden">
+        {/* Info / About — now taller (4 rows) */}
+        <section className="col-span-12 md:col-span-3 md:row-span-4 bg-background rounded-2xl p-5 md:p-6 flex flex-col gap-3 shadow-sm overflow-hidden">
           <p className="eyebrow text-accent">About</p>
           <h2 className="text-lg md:text-xl font-display leading-snug">
             The quiet architecture of dessert.
           </h2>
-          <p className="text-xs md:text-sm text-muted-foreground leading-relaxed overflow-hidden">
+          <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
             CIA graduate, 2019. Trained across Michelin kitchens in Brooklyn,
             Copenhagen, and Paris. Plated desserts and contemporary
             viennoiserie, built around peak-season ingredients.
+          </p>
+          <p className="hidden md:block text-xs md:text-sm text-muted-foreground leading-relaxed">
+            Current work focuses on the dialogue between technique and
+            restraint — small menus, deep seasons, and a quiet visual
+            grammar.
           </p>
           <div className="mt-auto grid grid-cols-3 gap-2 border-t border-border pt-3">
             <Stat n="07" l="Years" />
@@ -61,10 +72,36 @@ function Index() {
           </div>
         </section>
 
-        {/* Projects grid — the main focus */}
-        <section className="col-span-12 md:col-span-9 row-span-4 md:row-span-6 md:col-start-4 md:row-start-1 bg-background rounded-2xl p-3 md:p-5 shadow-sm">
-          <div className="h-full grid grid-cols-3 grid-rows-2 gap-3 md:gap-4">
-            {projects.map((p, i) => (
+        {/* Projects grid — main focus, with pagination */}
+        <section className="col-span-12 md:col-span-9 md:row-span-6 md:col-start-4 md:row-start-1 bg-background rounded-2xl p-3 md:p-5 shadow-sm flex flex-col gap-3">
+          <div className="flex items-center justify-between px-1">
+            <p className="eyebrow text-accent text-[10px]">Selected Work</p>
+            <div className="flex items-center gap-3">
+              <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                {String(page + 1).padStart(2, "0")} / {String(totalPages).padStart(2, "0")}
+              </span>
+              <div className="flex items-center gap-1">
+                <button
+                  onClick={() => setPage((p) => Math.max(0, p - 1))}
+                  disabled={page === 0}
+                  aria-label="Previous projects"
+                  className="size-7 rounded-full border border-border flex items-center justify-center hover:bg-foreground hover:text-background transition-colors disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-foreground"
+                >
+                  <ChevronLeft className="size-3.5" />
+                </button>
+                <button
+                  onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
+                  disabled={page >= totalPages - 1}
+                  aria-label="Next projects"
+                  className="size-7 rounded-full border border-border flex items-center justify-center hover:bg-foreground hover:text-background transition-colors disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-foreground"
+                >
+                  <ChevronRight className="size-3.5" />
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="flex-1 grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] md:grid-cols-3 md:grid-rows-2 auto-rows-[150px] md:auto-rows-auto gap-3 md:gap-4">
+            {pageProjects.map((p, i) => (
               <button
                 key={p.id}
                 onClick={() => setActive(p)}
@@ -79,7 +116,7 @@ function Index() {
                 <div className="absolute inset-0 bg-gradient-to-t from-foreground/85 via-foreground/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute inset-x-0 bottom-0 p-3 md:p-4 translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
                   <p className="eyebrow text-background/70 mb-1 text-[10px]">
-                    {String(i + 1).padStart(2, "0")} · {p.category}
+                    {String(page * PAGE_SIZE + i + 1).padStart(2, "0")} · {p.category}
                   </p>
                   <h3 className="text-sm md:text-base text-background font-display leading-tight">
                     {p.title}
@@ -90,8 +127,8 @@ function Index() {
           </div>
         </section>
 
-        {/* Contact bar */}
-        <section className="col-span-8 md:col-span-6 row-span-1 bg-background rounded-2xl px-5 py-3 md:py-4 shadow-sm flex items-center justify-between gap-4 md:col-start-1 md:row-start-7 hidden md:flex">
+        {/* Contact bar — moved to right column */}
+        <section className="col-span-12 md:col-span-6 md:row-span-1 bg-background rounded-2xl px-5 py-4 shadow-sm flex items-center justify-between gap-4 md:col-start-4 md:row-start-7">
           <div className="min-w-0">
             <p className="eyebrow text-accent mb-0.5 text-[10px]">Contact</p>
             <a
@@ -109,8 +146,8 @@ function Index() {
           </button>
         </section>
 
-        {/* Footer card */}
-        <section className="col-span-4 md:col-span-3 row-span-1 bg-background rounded-2xl px-5 py-3 md:py-4 shadow-sm flex items-center justify-between md:col-start-10 md:row-start-7 hidden md:flex">
+        {/* Footer card — moved to right column */}
+        <section className="col-span-12 md:col-span-3 md:row-span-1 bg-background rounded-2xl px-5 py-4 shadow-sm flex items-center justify-between md:col-start-10 md:row-start-7">
           <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
             © 2024
           </p>
