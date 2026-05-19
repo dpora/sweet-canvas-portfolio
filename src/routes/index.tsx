@@ -31,7 +31,7 @@ function Index() {
 
   return (
     <main className="md:h-screen w-screen md:overflow-hidden bg-secondary text-foreground p-3 md:p-4 flex flex-col min-h-screen">
-      <div className="flex-1 grid grid-cols-12 md:grid-rows-7 gap-3 md:gap-4 md:min-h-0">
+      <div className="flex-1 grid grid-cols-12 md:grid-rows-[repeat(6,minmax(0,1fr))_auto] gap-3 md:gap-4 md:min-h-0">
         {/* Profile card */}
         <section className="col-span-12 md:col-span-3 md:row-span-3 bg-background rounded-2xl p-4 md:p-5 flex flex-col gap-3 shadow-lg">
           <div className="h-48 md:flex-1 md:h-auto min-h-0 overflow-hidden rounded-xl bg-muted">
@@ -69,32 +69,6 @@ function Index() {
 
         {/* Projects grid — main focus, with pagination */}
         <section className="col-span-12 md:col-span-9 md:row-span-6 md:col-start-4 md:row-start-1 bg-background rounded-2xl p-3 md:p-5 shadow-lg flex flex-col gap-3">
-          <div className="flex items-center justify-between px-1">
-            <p className="eyebrow text-accent text-[10px]">Selected Work</p>
-            <div className="flex items-center gap-3">
-              <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-                {String(page + 1).padStart(2, "0")} / {String(totalPages).padStart(2, "0")}
-              </span>
-              <div className="flex items-center gap-1">
-                <button
-                  onClick={() => setPage((p) => Math.max(0, p - 1))}
-                  disabled={page === 0}
-                  aria-label="Previous projects"
-                  className="size-7 rounded-full border border-border flex items-center justify-center hover:bg-foreground hover:text-background transition-colors disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-foreground"
-                >
-                  <ChevronLeft className="size-3.5" />
-                </button>
-                <button
-                  onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
-                  disabled={page >= totalPages - 1}
-                  aria-label="Next projects"
-                  className="size-7 rounded-full border border-border flex items-center justify-center hover:bg-foreground hover:text-background transition-colors disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-foreground"
-                >
-                  <ChevronRight className="size-3.5" />
-                </button>
-              </div>
-            </div>
-          </div>
           <div className="flex-1 grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] md:grid-cols-3 md:grid-rows-2 auto-rows-[150px] md:auto-rows-auto gap-3 md:gap-4">
             {pageProjects.map((p, i) => (
               <button
@@ -120,10 +94,35 @@ function Index() {
               </button>
             ))}
           </div>
+          <div className="mt-auto flex items-center justify-between px-1 md:grid md:grid-cols-[1fr_auto_1fr] md:items-center">
+            <p className="eyebrow text-accent text-[10px]">Selected Work</p>
+            <div className="flex items-center gap-4 shrink-0">
+              <button
+                onClick={() => setPage((p) => Math.max(0, p - 1))}
+                disabled={page === 0}
+                aria-label="Previous projects"
+                className="size-10 rounded-full border border-border flex items-center justify-center hover:bg-foreground hover:text-background transition-colors disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-foreground"
+              >
+                <ChevronLeft className="size-5" />
+              </button>
+              <span className="text-base uppercase tracking-[0.22em] text-muted-foreground">
+                {String(page + 1).padStart(2, "0")} / {String(totalPages).padStart(2, "0")}
+              </span>
+              <button
+                onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
+                disabled={page >= totalPages - 1}
+                aria-label="Next projects"
+                className="size-10 rounded-full border border-border flex items-center justify-center hover:bg-foreground hover:text-background transition-colors disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-foreground"
+              >
+                <ChevronRight className="size-5" />
+              </button>
+            </div>
+            <div aria-hidden="true" className="hidden md:block" />
+          </div>
         </section>
 
         {/* Contact bar — moved to right column */}
-        <section className="col-span-12 md:col-span-6 md:row-span-1 bg-background rounded-2xl px-5 py-4 shadow-lg flex items-center justify-between gap-4 md:col-start-4 md:row-start-7">
+        <section className="col-span-12 md:col-span-6 md:row-span-1 bg-background rounded-2xl px-5 py-3 shadow-lg flex items-center justify-between gap-4 md:col-start-4 md:row-start-7">
           <div className="min-w-0">
             <p className="eyebrow text-accent mb-0.5 text-[10px]">Contact</p>
             <a
@@ -135,16 +134,16 @@ function Index() {
           </div>
           <button
             onClick={() => setContactOpen(true)}
-            className="shrink-0 inline-flex items-center gap-2 bg-foreground text-background px-4 py-2 rounded-full text-[10px] uppercase tracking-[0.2em] hover:bg-accent hover:text-foreground transition-colors"
+            className="shrink-0 inline-flex items-center gap-2 bg-foreground text-background px-4 py-1.5 rounded-full text-[10px] uppercase tracking-[0.2em] hover:bg-accent hover:text-foreground transition-colors"
           >
             Inquire <Send className="size-3" />
           </button>
         </section>
 
         {/* Footer card — moved to right column */}
-        <section className="col-span-12 md:col-span-3 md:row-span-1 bg-background rounded-2xl px-5 py-4 shadow-lg flex items-center justify-between md:col-start-10 md:row-start-7">
+        <section className="col-span-12 md:col-span-3 md:row-span-1 bg-background rounded-2xl px-5 py-3 shadow-lg flex items-center justify-between md:col-start-10 md:row-start-7">
           <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-            © 2024
+            © 2026
           </p>
           <div className="flex items-center gap-3">
             <a href="#" aria-label="Instagram" className="hover:text-accent transition-colors">
