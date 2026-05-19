@@ -189,11 +189,3 @@ function Index() {
   );
 }
 
-function Stat({ n, l }: { n: string; l: string }) {
-  return (
-    <div>
-      <p className="text-lg md:text-xl font-display">{n}</p>
-      <p className="eyebrow text-muted-foreground mt-0.5 text-[10px]">{l}</p>
-    </div>
-  );
-}
