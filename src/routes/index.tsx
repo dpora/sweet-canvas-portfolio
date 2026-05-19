@@ -143,7 +143,7 @@ function Index() {
         {/* Footer card — moved to right column */}
         <section className="col-span-12 md:col-span-3 md:row-span-1 bg-background rounded-2xl px-5 py-3 shadow-lg flex items-center justify-between md:col-start-10 md:row-start-7">
           <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-            © 2026
+            © 2024
           </p>
           <div className="flex items-center gap-3">
             <a href="#" aria-label="Instagram" className="hover:text-accent transition-colors">
