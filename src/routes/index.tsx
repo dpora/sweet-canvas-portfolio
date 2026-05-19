@@ -50,27 +50,22 @@ function Index() {
         </section>
 
         {/* Info / About — now taller (4 rows) */}
-        <section className="col-span-12 md:col-span-3 md:row-span-4 bg-background rounded-2xl p-5 md:p-6 flex flex-col gap-3 shadow-sm overflow-hidden">
-          <p className="eyebrow text-accent">About</p>
-          <h2 className="text-lg md:text-xl font-display leading-snug">
-            The quiet architecture of dessert.
-          </h2>
-          <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
-            CIA graduate, 2019. Trained across Michelin kitchens in Brooklyn,
-            Copenhagen, and Paris. Plated desserts and contemporary
-            viennoiserie, built around peak-season ingredients.
-          </p>
-          <p className="hidden md:block text-xs md:text-sm text-muted-foreground leading-relaxed">
-            Current work focuses on the dialogue between technique and
-            restraint — small menus, deep seasons, and a quiet visual
-            grammar.
-          </p>
-          <div className="mt-auto grid grid-cols-3 gap-2 border-t border-border pt-3">
-            <Stat n="07" l="Years" />
-            <Stat n="48" l="Projects" />
-            <Stat n="12" l="Kitchens" />
+        <section className="col-span-12 md:col-span-3 md:row-span-4 bg-background rounded-2xl p-5 md:p-6 flex flex-col gap-3 shadow-lg min-h-0">
+          <p className="eyebrow text-accent shrink-0">About</p>
+          <div className="flex-1 min-h-0 overflow-y-auto pr-1 space-y-3">
+            <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
+              CIA graduate, 2019. Trained across Michelin kitchens in Brooklyn,
+              Copenhagen, and Paris. Plated desserts and contemporary
+              viennoiserie, built around peak-season ingredients.
+            </p>
+            <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
+              Current work focuses on the dialogue between technique and
+              restraint — small menus, deep seasons, and a quiet visual
+              grammar.
+            </p>
           </div>
         </section>
+
 
         {/* Projects grid — main focus, with pagination */}
         <section className="col-span-12 md:col-span-9 md:row-span-6 md:col-start-4 md:row-start-1 bg-background rounded-2xl p-3 md:p-5 shadow-sm flex flex-col gap-3">
