@@ -33,8 +33,8 @@ function Index() {
     <main className="md:h-screen w-screen md:overflow-hidden bg-secondary text-foreground p-3 md:p-4 flex flex-col min-h-screen">
       <div className="flex-1 grid grid-cols-12 md:grid-rows-7 gap-3 md:gap-4 md:min-h-0">
         {/* Profile card */}
-        <section className="col-span-12 md:col-span-3 md:row-span-3 bg-background rounded-2xl p-4 md:p-5 flex flex-col gap-3 shadow-lg">
-          <div className="h-48 md:flex-1 md:h-auto min-h-0 overflow-hidden rounded-2xl bg-muted">
+        <section className="col-span-12 md:col-span-3 md:row-span-3 bg-background rounded-2xl p-4 md:p-5 flex flex-col gap-3 shadow-sm">
+          <div className="h-48 md:flex-1 md:h-auto min-h-0 overflow-hidden rounded-xl bg-muted">
             <img
               src={headshotImg}
               alt="Jennifer Whyte"
@@ -49,25 +49,31 @@ function Index() {
           </div>
         </section>
 
-        {/* Info / About — scrollable on overflow */}
-        <section className="col-span-12 md:col-span-3 md:row-span-4 bg-background rounded-2xl p-5 md:p-6 flex flex-col gap-3 shadow-lg min-h-0">
-          <p className="eyebrow text-accent shrink-0">About</p>
-          <div className="flex-1 min-h-0 overflow-y-auto pr-1 flex flex-col gap-3">
-            <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
-              CIA graduate, 2019. Trained across Michelin kitchens in Brooklyn,
-              Copenhagen, and Paris. Plated desserts and contemporary
-              viennoiserie, built around peak-season ingredients.
-            </p>
-            <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
-              Current work focuses on the dialogue between technique and
-              restraint — small menus, deep seasons, and a quiet visual
-              grammar.
-            </p>
+        {/* Info / About — now taller (4 rows) */}
+        <section className="col-span-12 md:col-span-3 md:row-span-4 bg-background rounded-2xl p-5 md:p-6 flex flex-col gap-3 shadow-sm overflow-hidden">
+          <p className="eyebrow text-accent">About</p>
+          <h2 className="text-lg md:text-xl font-display leading-snug">
+            The quiet architecture of dessert.
+          </h2>
+          <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
+            CIA graduate, 2019. Trained across Michelin kitchens in Brooklyn,
+            Copenhagen, and Paris. Plated desserts and contemporary
+            viennoiserie, built around peak-season ingredients.
+          </p>
+          <p className="hidden md:block text-xs md:text-sm text-muted-foreground leading-relaxed">
+            Current work focuses on the dialogue between technique and
+            restraint — small menus, deep seasons, and a quiet visual
+            grammar.
+          </p>
+          <div className="mt-auto grid grid-cols-3 gap-2 border-t border-border pt-3">
+            <Stat n="07" l="Years" />
+            <Stat n="48" l="Projects" />
+            <Stat n="12" l="Kitchens" />
           </div>
         </section>
 
         {/* Projects grid — main focus, with pagination */}
-        <section className="col-span-12 md:col-span-9 md:row-span-6 md:col-start-4 md:row-start-1 bg-background rounded-2xl p-3 md:p-5 shadow-lg flex flex-col gap-3">
+        <section className="col-span-12 md:col-span-9 md:row-span-6 md:col-start-4 md:row-start-1 bg-background rounded-2xl p-3 md:p-5 shadow-sm flex flex-col gap-3">
           <div className="flex items-center justify-between px-1">
             <p className="eyebrow text-accent text-[10px]">Selected Work</p>
             <div className="flex items-center gap-3">
@@ -99,7 +105,7 @@ function Index() {
               <button
                 key={p.id}
                 onClick={() => setActive(p)}
-                className="group relative overflow-hidden rounded-2xl bg-muted text-left shadow-md"
+                className="group relative overflow-hidden rounded-xl bg-muted text-left"
               >
                 <img
                   src={p.image}
@@ -122,7 +128,7 @@ function Index() {
         </section>
 
         {/* Contact bar — moved to right column */}
-        <section className="col-span-12 md:col-span-6 md:row-span-1 bg-background rounded-2xl px-5 py-4 shadow-lg flex items-center justify-between gap-4 md:col-start-4 md:row-start-7">
+        <section className="col-span-12 md:col-span-6 md:row-span-1 bg-background rounded-2xl px-5 py-4 shadow-sm flex items-center justify-between gap-4 md:col-start-4 md:row-start-7">
           <div className="min-w-0">
             <p className="eyebrow text-accent mb-0.5 text-[10px]">Contact</p>
             <a
@@ -141,7 +147,7 @@ function Index() {
         </section>
 
         {/* Footer card — moved to right column */}
-        <section className="col-span-12 md:col-span-3 md:row-span-1 bg-background rounded-2xl px-5 py-4 shadow-lg flex items-center justify-between md:col-start-10 md:row-start-7">
+        <section className="col-span-12 md:col-span-3 md:row-span-1 bg-background rounded-2xl px-5 py-4 shadow-sm flex items-center justify-between md:col-start-10 md:row-start-7">
           <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
             © 2024
           </p>
@@ -155,7 +161,6 @@ function Index() {
           </div>
         </section>
       </div>
-
 
       <ProjectDialog project={active} onClose={() => setActive(null)} />
 
@@ -189,3 +194,11 @@ function Index() {
   );
 }
 
+function Stat({ n, l }: { n: string; l: string }) {
+  return (
+    <div>
+      <p className="text-lg md:text-xl font-display">{n}</p>
+      <p className="eyebrow text-muted-foreground mt-0.5 text-[10px]">{l}</p>
+    </div>
+  );
+}
