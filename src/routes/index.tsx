@@ -9,11 +9,11 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Élise Moreau — Pastry Chef Portfolio" },
+      { title: "Jennifer Whyte — Pastry Chef Portfolio" },
       {
         name: "description",
         content:
-          "Portfolio of Élise Moreau, pastry chef. Plated desserts, viennoiserie, and celebration cakes.",
+          "Portfolio of Jennifer Whyte, pastry chef. Plated desserts, viennoiserie, and celebration cakes.",
       },
     ],
   }),
@@ -37,14 +37,14 @@ function Index() {
           <div className="h-48 md:flex-1 md:h-auto min-h-0 overflow-hidden rounded-xl bg-muted">
             <img
               src={headshotImg}
-              alt="Élise Moreau"
+              alt="Jennifer Whyte"
               className="w-full h-full object-cover"
             />
           </div>
           <div>
             <p className="eyebrow text-muted-foreground mb-1">Pastry Chef</p>
             <h1 className="text-xl md:text-2xl font-display leading-tight">
-              Élise Moreau
+              Jennifer Whyte
             </h1>
           </div>
         </section>
