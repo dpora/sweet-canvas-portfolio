@@ -40,20 +40,24 @@ export function ProjectDialog({ project, onClose }: Props) {
                   <p className="text-muted-foreground leading-relaxed">{project.description}</p>
                 </div>
 
-                <div className="border-t border-border pt-6">
-                  <p className="eyebrow text-muted-foreground mb-3">Flavor Profile</p>
-                  <p className="text-sm leading-relaxed">{project.flavor}</p>
-                </div>
+                {project.flavor && (
+                  <div className="border-t border-border pt-6">
+                    <p className="eyebrow text-muted-foreground mb-3">Flavor Profile</p>
+                    <p className="text-sm leading-relaxed">{project.flavor}</p>
+                  </div>
+                )}
+
+                {project.technique && (
+                  <div className="border-t border-border pt-6">
+                    <p className="eyebrow text-muted-foreground mb-3">Technique</p>
+                    <p className="text-sm leading-relaxed">{project.technique}</p>
+                  </div>
+                )}
 
                 <div className="border-t border-border pt-6">
-                  <p className="eyebrow text-muted-foreground mb-3">Technique</p>
-                  <p className="text-sm leading-relaxed">{project.technique}</p>
-                </div>
-
-                <div className="border-t border-border pt-6">
-                  <p className="eyebrow text-muted-foreground mb-4">Process</p>
+                  <p className="eyebrow text-muted-foreground mb-4">Gallery</p>
                   <div className="grid grid-cols-3 gap-2">
-                    {project.gallery.map((src, i) => (
+                    {[project.image, ...(project.gallery || [])].map((src, i) => (
                       <div key={i} className="aspect-square overflow-hidden bg-muted">
                         <img
                           src={src}
