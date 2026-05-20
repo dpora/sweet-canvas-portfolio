@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Instagram, Mail, Send, ChevronLeft, ChevronRight } from "lucide-react";
+import { Send, ChevronLeft, ChevronRight, Linkedin } from "lucide-react";
 import headshotImg from "@/assets/headshot.jpg";
 import { projects, type Project } from "@/components/portfolio/projects";
 import { ProjectDialog } from "@/components/portfolio/ProjectDialog";
@@ -25,6 +25,7 @@ function Index() {
   const [active, setActive] = useState<Project | null>(null);
   const [contactOpen, setContactOpen] = useState(false);
   const [page, setPage] = useState(0);
+  const [aboutExpanded, setAboutExpanded] = useState(false);
 
   const totalPages = Math.ceil(projects.length / PAGE_SIZE);
   const pageProjects = projects.slice(page * PAGE_SIZE, page * PAGE_SIZE + PAGE_SIZE);
@@ -38,6 +39,7 @@ function Index() {
             <img
               src={headshotImg}
               alt="Jennifer Whyte"
+              suppressHydrationWarning
               className="w-full h-full object-cover"
             />
           </div>
@@ -52,15 +54,40 @@ function Index() {
         {/* Info / About — now taller (4 rows) */}
         <section className="col-span-12 md:col-span-3 md:row-span-4 bg-background rounded-2xl p-5 md:p-6 flex flex-col gap-3 shadow-lg min-h-0">
           <p className="eyebrow text-accent shrink-0">About</p>
-          <div className="flex-1 min-h-0 overflow-y-auto pr-1 space-y-3">
-            <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
-              Honors graduate of The Culinary Institute of America with a deep passion for creating exceptional pastries and confections. 
-              Highly organized and self-driven, with experience ranging from high-volume Forbes 5-Star resorts to independently running a storefront bakery department. 
-              I pride myself on executing recipes to exact specifications while continuously exploring new, creative flavor profiles.
-            </p>
-            <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
-              Relocating to Raleigh, NC, and excited to bring my dedication and foundational skills to a dynamic new kitchen.
-            </p>
+          <div className="flex-1 min-h-0 overflow-y-auto pr-1 flex flex-col">
+            <div className={`space-y-3 ${!aboutExpanded ? 'line-clamp-2 md:line-clamp-none' : ''}`}>
+              <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
+                Honors graduate of The Culinary Institute of America with a deep passion for creating exceptional pastries and confections. 
+                Highly organized and self-driven, with experience ranging from high-volume Forbes 5-Star resorts to independently running a storefront bakery department. 
+                I pride myself on executing recipes to exact specifications while continuously exploring new, creative flavor profiles.
+              </p>
+              <p className="text-xs md:text-sm text-muted-foreground leading-relaxed hidden md:block">
+                Relocating to Raleigh, NC, and excited to bring my dedication and foundational skills to a dynamic new kitchen.
+              </p>
+            </div>
+            {!aboutExpanded && (
+              <button 
+                type="button"
+                onClick={() => setAboutExpanded(true)}
+                className="text-xs font-semibold text-foreground mt-2 md:hidden self-start"
+              >
+                Read more...
+              </button>
+            )}
+            {aboutExpanded && (
+              <>
+                <p className="text-xs text-muted-foreground leading-relaxed mt-3 md:hidden">
+                  Relocating to Raleigh, NC, and excited to bring my dedication and foundational skills to a dynamic new kitchen.
+                </p>
+                <button 
+                  type="button"
+                  onClick={() => setAboutExpanded(false)}
+                  className="text-xs font-semibold text-foreground mt-2 md:hidden self-start"
+                >
+                  Show less
+                </button>
+              </>
+            )}
           </div>
         </section>
 
@@ -71,6 +98,7 @@ function Index() {
             {pageProjects.map((p, i) => (
               <button
                 key={p.id}
+                type="button"
                 onClick={() => setActive(p)}
                 className="group relative overflow-hidden rounded-xl bg-muted text-left"
               >
@@ -78,6 +106,7 @@ function Index() {
                   src={p.image}
                   alt={p.title}
                   loading="lazy"
+                  suppressHydrationWarning
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-foreground/85 via-foreground/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -96,6 +125,7 @@ function Index() {
             <p className="eyebrow text-accent text-[10px]">Selected Work</p>
             <div className="flex items-center gap-4 shrink-0">
               <button
+                type="button"
                 onClick={() => setPage((p) => Math.max(0, p - 1))}
                 disabled={page === 0}
                 aria-label="Previous projects"
@@ -107,6 +137,7 @@ function Index() {
                 {String(page + 1).padStart(2, "0")} / {String(totalPages).padStart(2, "0")}
               </span>
               <button
+                type="button"
                 onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
                 disabled={page >= totalPages - 1}
                 aria-label="Next projects"
@@ -130,27 +161,31 @@ function Index() {
               jenwhyte03@outlook.com
             </a>
           </div>
-          <button
-            onClick={() => setContactOpen(true)}
-            className="shrink-0 inline-flex items-center gap-2 bg-foreground text-background px-4 py-1.5 rounded-full text-[10px] uppercase tracking-[0.2em] hover:bg-accent hover:text-foreground transition-colors"
-          >
-            Inquire <Send className="size-3" />
-          </button>
+          <div className="flex items-center gap-2">
+            <a
+              href="https://www.linkedin.com/in/jen-whyte/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="shrink-0 size-8 bg-muted text-foreground flex items-center justify-center rounded-full hover:bg-accent hover:text-foreground transition-colors"
+            >
+              <Linkedin className="size-4" />
+            </a>
+            <button
+              type="button"
+              onClick={() => setContactOpen(true)}
+              className="shrink-0 inline-flex items-center gap-2 bg-foreground text-background px-4 py-1.5 rounded-full text-[10px] uppercase tracking-[0.2em] hover:bg-accent hover:text-foreground transition-colors"
+            >
+              Inquire <Send className="size-3" />
+            </button>
+          </div>
         </section>
 
         {/* Footer card — moved to right column */}
-        <section className="col-span-12 md:col-span-3 md:row-span-1 bg-background rounded-2xl px-5 py-3 shadow-lg flex items-center justify-between md:col-start-10 md:row-start-7">
+        <section className="col-span-12 md:col-span-3 md:row-span-1 bg-background rounded-2xl px-5 py-3 shadow-lg flex items-center justify-start md:col-start-10 md:row-start-7">
           <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-            © 2026
+            Made by <a href="https://danpora.dev" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors hover:underline">dpora</a> © 2026
           </p>
-          <div className="flex items-center gap-3">
-            <a href="#" aria-label="Instagram" className="hover:text-accent transition-colors">
-              <Instagram className="size-4" />
-            </a>
-            <a href="mailto:jenwhyte03@outlook.com" aria-label="Email" className="hover:text-accent transition-colors">
-              <Mail className="size-4" />
-            </a>
-          </div>
         </section>
       </div>
 

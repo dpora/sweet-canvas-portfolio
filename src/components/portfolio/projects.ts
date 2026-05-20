@@ -6,7 +6,6 @@ import imgTake5_2 from '@/assets/take5_2.jpg';
 
 import imgPbjChoc from '@/assets/pbj_choc.jpg';
 import imgPbjChoc2 from '@/assets/pbj_choc_2.jpg';
-import imgPbjChocolate from '@/assets/pbj_chocolate.jpg';
 
 import imgChocolates from '@/assets/chocolates.jpg';
 import imgStarchMold from '@/assets/starch_mold.mov';
@@ -94,7 +93,7 @@ export const projects: Project[] = [
     description: 'Peanut Butter gianduja, raspberry jelly, dark chocolate.',
     flavor: '',
     technique: 'Chocolate tempering and dipping',
-    gallery: [imgPbjChoc2, imgPbjChocolate]
+    gallery: [imgPbjChoc2]
   },
   {
     id: 'assorted-chocolates',
@@ -103,7 +102,7 @@ export const projects: Project[] = [
     image: imgChocolates,
     description: 'JFB’s (almond, cherry, dark chocolate), raspberry caramels, liquor cordials, passion vanillas.',
     technique: 'Chocolate tempering and dipping',
-    gallery: [imgStarchMold, imgBottle]
+    gallery: []
   },
   {
     id: 'poodle-truffles',
@@ -121,7 +120,7 @@ export const projects: Project[] = [
     image: imgHazelnutTruffle,
     description: 'Milk chocolate, hazelnut praline, buckwheat honey, dipped in dark chocolate topped with toasted hazelnut.',
     technique: 'Chocolate tempering and dipping',
-    gallery: [imgHazelnutDessert]
+    gallery: []
   },
   {
     id: 'earl-grey-pinwheel-cookies',
@@ -153,7 +152,7 @@ export const projects: Project[] = [
     category: 'Plated dessert',
     image: imgSmoresDessert,
     description: 'Chocolate truffle lava beignet, smoked milk chocolate Bailey\'s cremeux, graham sable sticks, graham cracker ice cream, torched vanilla marshmallow meringue rose, white chocolate flame decor.',
-    gallery: [imgSmoresDessert2, imgSmoresDessert3, imgSmoresDessert4, imgSmoresDessert5, imgSmoresDessert6, imgRose]
+    gallery: [imgSmoresDessert2, imgSmoresDessert3, imgSmoresDessert4, imgSmoresDessert5, imgSmoresDessert6]
   },
   {
     id: 'strawberry-matcha-cake',
