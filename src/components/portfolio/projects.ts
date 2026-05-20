@@ -1,141 +1,230 @@
-import p1 from "@/assets/project-1.jpg";
-import p2 from "@/assets/project-2.jpg";
-import p3 from "@/assets/project-3.jpg";
-import p4 from "@/assets/project-4.jpg";
-import p5 from "@/assets/project-5.jpg";
-import p6 from "@/assets/project-6.jpg";
+import imgLemonBasil from '@/assets/lemon_basil.jpg';
+import imgLemonBasil2 from '@/assets/lemon_basil_2.jpg';
 
-export interface Project {
+import imgTake5 from '@/assets/take5.jpg';
+import imgTake5_2 from '@/assets/take5_2.jpg';
+
+import imgPbjChoc from '@/assets/pbj_choc.jpg';
+import imgPbjChoc2 from '@/assets/pbj_choc_2.jpg';
+import imgPbjChocolate from '@/assets/pbj_chocolate.jpg';
+
+import imgChocolates from '@/assets/chocolates.jpg';
+import imgStarchMold from '@/assets/starch_mold.mov';
+import imgBottle from '@/assets/bottle.jpg';
+
+import imgPoodleTruffles from '@/assets/poodle_truffles.jpg';
+
+import imgHazelnutTruffle from '@/assets/hazelnut_truffle.jpg';
+import imgHazelnutDessert from '@/assets/hazelnut_dessert.jpg';
+
+import imgEarlGreyCookie from '@/assets/earl_grey_cookie.jpg';
+import imgEarlGreyCookie2 from '@/assets/earl_grey_cookie_2.jpg';
+import imgEarlGreyCookie3 from '@/assets/earl_grey_cookie_3.jpg';
+import imgEarlGreyCookie4 from '@/assets/earl_grey_cookie_4.jpg';
+
+import imgBiscotti from '@/assets/biscotti.jpg';
+import imgBiscotti2 from '@/assets/biscotti_2.jpg';
+
+import imgButtermilkCake from '@/assets/buttermilk_cake.jpg';
+
+import imgSmoresDessert from '@/assets/smores_dessert.jpg';
+import imgSmoresDessert2 from '@/assets/smores_dessert_2.jpg';
+import imgSmoresDessert3 from '@/assets/smores_dessert_3.jpg';
+import imgSmoresDessert4 from '@/assets/smores_dessert_4.jpg';
+import imgSmoresDessert5 from '@/assets/smores_dessert_5.jpg';
+import imgSmoresDessert6 from '@/assets/smores_dessert_6.jpg';
+import imgRose from '@/assets/rose.jpg';
+
+import imgStrawbMatcha from '@/assets/strawb_matcha.jpg';
+import imgStrawbMatcha2 from '@/assets/strawb_matcha_2.jpg';
+
+import imgCarrotCake from '@/assets/carrot_cake.jpg';
+
+import imgGrapefruitIpp from '@/assets/grapefruit_ipp.jpg';
+
+import imgVintageCake from '@/assets/vintage_cake.jpg';
+import imgVintageCake2 from '@/assets/vintage_cake_2.jpg';
+
+import imgFlowerCake from '@/assets/flower_cake.jpg';
+import imgFlowerCake2 from '@/assets/flower_cake_2.jpg';
+
+import imgLemonPoppy from '@/assets/lemon_poppy.jpg';
+
+import imgRolls from '@/assets/rolls.jpg';
+
+import imgBaguette from '@/assets/baugette.jpg';
+
+import imgJewelBar from '@/assets/jewel_bar.jpg';
+
+export interface Project {  
   id: string;
   title: string;
   category: string;
   image: string;
   description: string;
-  flavor: string;
-  technique: string;
+  flavor?: string;
+  technique?: string;
   gallery: string[];
 }
 
 export const projects: Project[] = [
   {
-    id: "lemon-tart",
-    title: "Citron Confit Tart",
-    category: "Plated Dessert · 2024",
-    image: p1,
-    description:
-      "A modern reimagining of the classic tarte au citron — built on a thin sablé Breton, layered with Amalfi lemon curd, and finished with torched Italian meringue kisses.",
-    flavor: "Bright Amalfi lemon, brown butter, vanilla bean, toasted egg white.",
-    technique: "Pâte sablée Breton · Cured lemon curd · Italian meringue piping.",
-    gallery: [p1, p3, p4],
+    id: 'lemon-blueberry-basil-cake',
+    title: 'Lemon Blueberry Basil Cake',
+    category: 'Cakes',
+    image: imgLemonBasil,
+    description: 'Entrement. Lemon mousse, basil cremeux, wild blueberry compote, citrus chiffon, raspberry jam, sugar cookie, cocoa butter spray.',
+    gallery: [imgLemonBasil2]
   },
   {
-    id: "chocolate-entremet",
-    title: "Noir Entremet",
-    category: "Composed Dessert · 2024",
-    image: p2,
-    description:
-      "Stacked 70% Valrhona chocolate spheres on a hazelnut financier base, glossed with a dark mirror glaze and finished with a disc of white chocolate and candied orange.",
-    flavor: "Dark chocolate, toasted hazelnut, candied orange, sea salt.",
-    technique: "Tempered chocolate · Mirror glaze · Silicone moulding.",
-    gallery: [p2, p6, p1],
+    id: 'take-5-entrement',
+    title: '“Take 5” Entrement',
+    category: 'Cakes',
+    image: imgTake5,
+    description: 'Peanut Butter mousse, chocolate flourless cake, toasted peanuts, caramel cremeux, gianduja pretzel crunch, chocolate cookie.',
+    flavor: 'Bright Amalfi lemon, brown butter, vanilla bean, toasted egg white.',
+    technique: 'glazing',
+    gallery: [imgTake5_2]
   },
   {
-    id: "viennoiserie",
-    title: "Beurre Croissant",
-    category: "Viennoiserie · 2023",
-    image: p3,
-    description:
-      "Seventy-two hour cold-fermented croissants laminated with cultured Normandy butter to produce an open, honeycomb crumb and a deeply caramelised exterior.",
-    flavor: "Cultured butter, toasted wheat, honey, faint hazelnut.",
-    technique: "Cold lamination · 72h ferment · Steam-injected bake.",
-    gallery: [p3, p4, p1],
+    id: 'pbj-chocolate',
+    title: 'PBJ Chocolate',
+    category: 'Chocolate and Confections',
+    image: imgPbjChoc,
+    description: 'Peanut Butter gianduja, raspberry jelly, dark chocolate.',
+    flavor: '',
+    technique: 'Chocolate tempering and dipping',
+    gallery: [imgPbjChoc2, imgPbjChocolate]
   },
   {
-    id: "macarons",
-    title: "Petits Macarons",
-    category: "Confection · 2024",
-    image: p4,
-    description:
-      "An understated palette of five seasonal macarons — Tahitian vanilla, rose-lychee, pistachio, salted caramel, and dark chocolate ganache.",
-    flavor: "Almond meringue, ganache, jam, praliné.",
-    technique: "Italian meringue method · 24h maturation.",
-    gallery: [p4, p1, p5],
+    id: 'assorted-chocolates',
+    title: 'Assorted Chocolates',
+    category: 'Chocolate and Confections',
+    image: imgChocolates,
+    description: 'JFB’s (almond, cherry, dark chocolate), raspberry caramels, liquor cordials, passion vanillas.',
+    technique: 'Chocolate tempering and dipping',
+    gallery: [imgStarchMold, imgBottle]
   },
   {
-    id: "wedding-cake",
-    title: "Atelier Wedding Cake",
-    category: "Celebration · 2024",
-    image: p5,
-    description:
-      "A three-tier ivory fondant cake with hand-shaped sugar peonies and silver dragée stems. Built on layers of vanilla génoise and elderflower buttercream.",
-    flavor: "Vanilla génoise, elderflower buttercream, fresh berries.",
-    technique: "Sugar floristry · Fondant sculpting · Internal armature.",
-    gallery: [p5, p1, p4],
+    id: 'poodle-truffles',
+    title: 'Poodle Truffles',
+    category: 'Chocolate and Confections',
+    image: imgPoodleTruffles,
+    description: 'Dark chocolate coffee truffles rolled in tight “poodle” curls.',
+    technique: 'Chocolate tempering and rolling, chocolate curls',
+    gallery: []
   },
   {
-    id: "shortcake",
-    title: "Fraise des Bois",
-    category: "Plated Dessert · 2023",
-    image: p6,
-    description:
-      "Deconstructed strawberry shortcake on warm vanilla sablé with a quenelle of crème fraîche and edible micro flowers, plated on heated slate.",
-    flavor: "Wild strawberry, vanilla, crème fraîche, basil oil.",
-    technique: "Sablé Breton · Quenelle · Cold plating contrast.",
-    gallery: [p6, p1, p2],
+    id: 'honey-hazelnut-truffles',
+    title: 'Honey Hazelnut Truffles',
+    category: 'Chocolate and Confections',
+    image: imgHazelnutTruffle,
+    description: 'Milk chocolate, hazelnut praline, buckwheat honey, dipped in dark chocolate topped with toasted hazelnut.',
+    technique: 'Chocolate tempering and dipping',
+    gallery: [imgHazelnutDessert]
   },
   {
-    id: "paris-brest",
-    title: "Paris-Brest Noisette",
-    category: "Classique · 2024",
-    image: p2,
-    description:
-      "A modern Paris-Brest piped with Piedmont hazelnut praliné mousseline, finished with cracked caramelised hazelnuts and a craquelin choux ring.",
-    flavor: "Hazelnut praliné, brown butter, caramel.",
-    technique: "Craquelin choux · Praliné mousseline.",
-    gallery: [p2, p4, p3],
+    id: 'earl-grey-pinwheel-cookies',
+    title: 'Earl Grey Pinwheel Cookies',
+    category: 'Cookies',
+    image: imgEarlGreyCookie,
+    description: 'Buttery Earl Grey cookie with colorful spirals including freeze dried blueberry powder, premium earl grey tea leaves, and orange zest cookie.',
+    gallery: [imgEarlGreyCookie2, imgEarlGreyCookie3, imgEarlGreyCookie4]
   },
   {
-    id: "mille-feuille",
-    title: "Vanilla Mille-Feuille",
-    category: "Plated Dessert · 2024",
-    image: p3,
-    description:
-      "Inverse puff pastry caramelised between plates, layered with Madagascar vanilla diplomat cream and a thin fondant glaze marbled in dark chocolate.",
-    flavor: "Madagascar vanilla, caramelised butter, dark chocolate.",
-    technique: "Inverse puff · Diplomat cream · Fondant marbling.",
-    gallery: [p3, p1, p6],
+    id: 'almond-biscotti',
+    title: 'Almond Biscotti',
+    category: 'Cookies',
+    image: imgBiscotti,
+    description: 'Traditional twice baked almond biscotti dipped in dark chocolate.',
+    gallery: [imgBiscotti2]
   },
   {
-    id: "tarte-fraise",
-    title: "Tarte aux Fraises",
-    category: "Seasonal · 2024",
-    image: p1,
-    description:
-      "Sweet pâte sucrée filled with almond crémeux and topped with hand-placed Gariguette strawberries glazed in a light hibiscus jelly.",
-    flavor: "Gariguette strawberry, almond, hibiscus.",
-    technique: "Pâte sucrée · Almond crémeux · Mirror jelly.",
-    gallery: [p1, p6, p5],
+    id: 'chocolate-buttermilk-cake',
+    title: 'Chocolate Buttermilk Cake',
+    category: 'Cakes',
+    image: imgButtermilkCake,
+    description: 'Six layered chocolate cake with chocolate buttercream and dark chocolate ganache filling. Glazed with ganache and decorated with crispy pearls.',
+    gallery: []
   },
   {
-    id: "opera",
-    title: "Opéra Cake",
-    category: "Classique · 2023",
-    image: p4,
-    description:
-      "Seven thin layers of almond joconde soaked in espresso, alternating with coffee buttercream and dark chocolate ganache, finished with a glossy chocolate glaze.",
-    flavor: "Espresso, dark chocolate, toasted almond.",
-    technique: "Joconde sponge · Layered assembly · Mirror glaze.",
-    gallery: [p4, p2, p6],
+    id: 'smores-dessert',
+    title: 'S’mores Dessert',
+    category: 'Plated dessert',
+    image: imgSmoresDessert,
+    description: 'Chocolate truffle lava beignet, smoked milk chocolate Bailey\'s cremeux, graham sable sticks, graham cracker ice cream, torched vanilla marshmallow meringue rose, white chocolate flame decor.',
+    gallery: [imgSmoresDessert2, imgSmoresDessert3, imgSmoresDessert4, imgSmoresDessert5, imgSmoresDessert6, imgRose]
   },
   {
-    id: "saint-honore",
-    title: "Saint-Honoré",
-    category: "Composed Dessert · 2024",
-    image: p5,
-    description:
-      "Caramel-dipped choux puffs arranged on a puff pastry disc, piped with Chantilly vanilla and decorated with spun sugar.",
-    flavor: "Vanilla Chantilly, caramel, butter pastry.",
-    technique: "Pâte feuilletée · Caramel dip · Saint-Honoré tip.",
-    gallery: [p5, p3, p2],
+    id: 'strawberry-matcha-cake',
+    title: 'Strawberry Matcha Cake',
+    category: 'Cakes',
+    image: imgStrawbMatcha,
+    description: 'Premium grade matcha, strawberry compote filling, stabilized strawberry whipped cream.',
+    gallery: [imgStrawbMatcha2]
   },
+  {
+    id: 'carrot-cake',
+    title: 'Carrot Cake',
+    category: 'Cakes',
+    image: imgCarrotCake,
+    description: 'Cinnamon carrot cake with walnuts, cream cheese frosting, dark chocolate drizzle, marzipan carrot decor.',
+    gallery: []
+  },
+  {
+    id: 'blood-orange-ginger-flower',
+    title: 'Blood Orange Ginger Flower',
+    category: 'Individual Dessert',
+    image: imgGrapefruitIpp,
+    description: 'Honey ginger cake, ginger cremeux, blood orange mousse, blood orange pearls, white chocolate flower, red chocolate spray.',
+    gallery: []
+  },
+  {
+    id: 'vintage-style-cake',
+    title: 'Vintage style cake',
+    category: 'Cakes',
+    image: imgVintageCake,
+    description: 'Vanilla cake, lemon curd filling, piped vanilla buttercream.',
+    gallery: [imgVintageCake2]
+  },
+  {
+    id: 'floral-birthday-cake',
+    title: 'Floral birthday cake',
+    category: 'Cakes',
+    image: imgFlowerCake,
+    description: 'Delicate vanilla cake, chocolate ganache filling, piped vanilla buttercream floral arrangement.',
+    gallery: [imgFlowerCake2]
+  },
+  {
+    id: 'lemon-poppyseed-pound-cake',
+    title: 'Lemon poppyseed Pound Cake',
+    category: 'Cakes',
+    image: imgLemonPoppy,
+    description: 'Bright lemon poppy seed pound cake, sweet glaze, candied lemon slices, blue cornflowers.',
+    gallery: []
+  },
+  {
+    id: 'brioche-rolls',
+    title: 'Brioche rolls',
+    category: 'Breads',
+    image: imgRolls,
+    description: 'Buttery brioche rolls.',
+    gallery: []
+  },
+  {
+    id: 'baguette',
+    title: 'Baguette',
+    category: 'Breads',
+    image: imgBaguette,
+    description: 'Poolish baguette with 5% rye flour.',
+    gallery: []
+  },
+  {
+    id: 'jewel-bar',
+    title: 'Jewel Bar',
+    category: 'Chocolates and Confections',
+    image: imgJewelBar,
+    description: 'Hand tempered 70% dark chocolate studded with candied orange peel, dried cherry, freeze dried raspberry, candied violet petals, dried blueberries, crispy pearls.',
+    gallery: []
+  }
 ];

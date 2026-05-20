@@ -54,14 +54,12 @@ function Index() {
           <p className="eyebrow text-accent shrink-0">About</p>
           <div className="flex-1 min-h-0 overflow-y-auto pr-1 space-y-3">
             <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
-              CIA graduate, 2019. Trained across Michelin kitchens in Brooklyn,
-              Copenhagen, and Paris. Plated desserts and contemporary
-              viennoiserie, built around peak-season ingredients.
+              Honors graduate of The Culinary Institute of America with a deep passion for creating exceptional pastries and confections. 
+              Highly organized and self-driven, with experience ranging from high-volume Forbes 5-Star resorts to independently running a storefront bakery department. 
+              I pride myself on executing recipes to exact specifications while continuously exploring new, creative flavor profiles.
             </p>
             <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
-              Current work focuses on the dialogue between technique and
-              restraint — small menus, deep seasons, and a quiet visual
-              grammar.
+              Relocating to Raleigh, NC, and excited to bring my dedication and foundational skills to a dynamic new kitchen.
             </p>
           </div>
         </section>
@@ -126,10 +124,10 @@ function Index() {
           <div className="min-w-0">
             <p className="eyebrow text-accent mb-0.5 text-[10px]">Contact</p>
             <a
-              href="mailto:hello@elisemoreau.com"
+              href="mailto:jenwhyte03@outlook.com"
               className="text-sm md:text-base font-display hover:text-accent transition-colors truncate block"
             >
-              hello@elisemoreau.com
+              jenwhyte03@outlook.com
             </a>
           </div>
           <button
@@ -143,13 +141,13 @@ function Index() {
         {/* Footer card — moved to right column */}
         <section className="col-span-12 md:col-span-3 md:row-span-1 bg-background rounded-2xl px-5 py-3 shadow-lg flex items-center justify-between md:col-start-10 md:row-start-7">
           <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-            © 2024
+            © 2026
           </p>
           <div className="flex items-center gap-3">
             <a href="#" aria-label="Instagram" className="hover:text-accent transition-colors">
               <Instagram className="size-4" />
             </a>
-            <a href="mailto:hello@elisemoreau.com" aria-label="Email" className="hover:text-accent transition-colors">
+            <a href="mailto:jenwhyte03@outlook.com" aria-label="Email" className="hover:text-accent transition-colors">
               <Mail className="size-4" />
             </a>
           </div>
