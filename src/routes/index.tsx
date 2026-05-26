@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Send, ChevronLeft, ChevronRight, Linkedin } from "lucide-react";
+import { Send, ChevronLeft, ChevronRight, Linkedin, FileText } from "lucide-react";
 import headshotImg from "@/assets/headshot.jpg";
 import resumePdf from "@/assets/Jen_Whyte_Resume_QR.pdf";
 import { projects, type Project } from "@/components/portfolio/projects";
@@ -172,14 +172,6 @@ function Index() {
             >
               <Linkedin className="size-4" />
             </a>
-            <a
-              href={resumePdf}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="shrink-0 inline-flex items-center gap-2 bg-foreground text-background px-4 py-1.5 rounded-full text-[10px] uppercase tracking-[0.2em] hover:bg-accent hover:text-foreground transition-colors"
-            >
-              Resume
-            </a>
             <button
               type="button"
               onClick={() => setContactOpen(true)}
@@ -191,10 +183,18 @@ function Index() {
         </section>
 
         {/* Footer card — moved to right column */}
-        <section className="col-span-12 md:col-span-3 md:row-span-1 bg-background rounded-2xl px-5 py-3 shadow-lg flex items-center justify-start md:col-start-10 md:row-start-7">
+        <section className="col-span-12 md:col-span-3 md:row-span-1 bg-background rounded-2xl px-5 py-3 shadow-lg flex items-center justify-between md:col-start-10 md:row-start-7">
           <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
             Made by <a href="https://danpora.dev" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors hover:underline">dpora</a> © 2026
           </p>
+          <a
+            href={resumePdf}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 inline-flex items-center gap-2 bg-foreground text-background px-4 py-1.5 rounded-full text-[10px] uppercase tracking-[0.2em] hover:bg-accent hover:text-foreground transition-colors"
+          >
+            Resume <FileText className="size-3" />
+          </a>
         </section>
       </div>
 

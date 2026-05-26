@@ -10,13 +10,15 @@ interface Props {
 }
 
 export function ProjectDialog({ project, onClose }: Props) {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [imageIndex, setImageIndex] = useState<number>(0);
 
   useEffect(() => {
     if (project) {
-      setSelectedImage(project.image);
+      setImageIndex(0);
     }
   }, [project]);
+
+  const allImages = project ? [project.image, ...(project.gallery || [])] : [];
 
   return (
     <Dialog open={!!project} onOpenChange={(o) => !o && onClose()}>
@@ -38,38 +40,38 @@ export function ProjectDialog({ project, onClose }: Props) {
             </div>
 
             <div className="grid lg:grid-cols-5 gap-0 lg:h-[92vh]">
-              <div className="lg:col-span-3 bg-muted lg:h-full relative group">
-                <img
-                  src={selectedImage || project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover aspect-square lg:aspect-auto"
-                />
+              <div className="lg:col-span-3 bg-muted lg:h-full relative group lg:min-h-0">
+                <div className="w-full aspect-square lg:absolute lg:inset-0 lg:h-full lg:w-full lg:aspect-auto">
+                  <img
+                    src={allImages[imageIndex]}
+                    alt={project.title}
+                    className="w-full h-full object-cover lg:absolute lg:inset-0"
+                  />
+                </div>
                 
-                {/* Mobile Image Navigation Arrows */}
+                {/* Image Navigation Arrows */}
                 {project.gallery && project.gallery.length > 0 && (
                   <>
                     <button
                       type="button"
-                      onClick={() => {
-                        const allImages = [project.image, ...(project.gallery || [])];
-                        const currentIndex = allImages.indexOf(selectedImage || project.image);
-                        const prevIndex = currentIndex === 0 ? allImages.length - 1 : currentIndex - 1;
-                        setSelectedImage(allImages[prevIndex]);
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        setImageIndex(prev => (prev === 0 ? allImages.length - 1 : prev - 1));
                       }}
-                      className="absolute bottom-4 left-4 z-10 size-10 flex items-center justify-center bg-background/80 backdrop-blur rounded-full hover:bg-foreground hover:text-background transition-colors lg:hidden shadow-sm"
+                      className="absolute bottom-4 lg:bottom-auto lg:top-1/2 lg:-translate-y-1/2 left-4 z-10 size-10 flex items-center justify-center bg-background/80 backdrop-blur rounded-full hover:bg-foreground hover:text-background transition-colors shadow-sm"
                       aria-label="Previous image"
                     >
                       <ChevronLeft className="size-6" />
                     </button>
                     <button
                       type="button"
-                      onClick={() => {
-                        const allImages = [project.image, ...(project.gallery || [])];
-                        const currentIndex = allImages.indexOf(selectedImage || project.image);
-                        const nextIndex = currentIndex === allImages.length - 1 ? 0 : currentIndex + 1;
-                        setSelectedImage(allImages[nextIndex]);
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        setImageIndex(prev => (prev === allImages.length - 1 ? 0 : prev + 1));
                       }}
-                      className="absolute bottom-4 right-4 z-10 size-10 flex items-center justify-center bg-background/80 backdrop-blur rounded-full hover:bg-foreground hover:text-background transition-colors lg:hidden shadow-sm"
+                      className="absolute bottom-4 lg:bottom-auto lg:top-1/2 lg:-translate-y-1/2 right-4 z-10 size-10 flex items-center justify-center bg-background/80 backdrop-blur rounded-full hover:bg-foreground hover:text-background transition-colors shadow-sm"
                       aria-label="Next image"
                     >
                       <ChevronRight className="size-6" />
@@ -102,12 +104,12 @@ export function ProjectDialog({ project, onClose }: Props) {
                   <div className="border-t border-border pt-6">
                     <p className="eyebrow text-muted-foreground mb-4">Gallery</p>
                     <div className="grid grid-cols-3 gap-2">
-                      {[project.image, ...(project.gallery || [])].map((src, i) => (
+                      {allImages.map((src, i) => (
                         <button 
                           key={i} 
                           type="button"
-                          onClick={() => setSelectedImage(src)}
-                          className={`aspect-square overflow-hidden bg-muted transition-all ${selectedImage === src ? "ring-2 ring-foreground" : "opacity-70 hover:opacity-100"}`}
+                          onClick={() => setImageIndex(i)}
+                          className={`aspect-square overflow-hidden bg-muted transition-all ${imageIndex === i ? "ring-2 ring-foreground" : "opacity-70 hover:opacity-100"}`}
                         >
                           <img
                             src={src}
