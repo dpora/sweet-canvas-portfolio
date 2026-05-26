@@ -68,22 +68,12 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    id: 'lemon-blueberry-basil-cake',
-    title: 'Lemon Blueberry Basil Cake',
+    id: 'lemon-blueberry-basil-entrement',
+    title: 'Lemon Blueberry Basil Entrement',
     category: 'Cakes',
     image: imgLemonBasil,
     description: 'Entrement. Lemon mousse, basil cremeux, wild blueberry compote, citrus chiffon, raspberry jam, sugar cookie, cocoa butter spray.',
     gallery: [imgLemonBasil2]
-  },
-  {
-    id: 'take-5-entrement',
-    title: '“Take 5” Entrement',
-    category: 'Cakes',
-    image: imgTake5,
-    description: 'Peanut Butter mousse, chocolate flourless cake, toasted peanuts, caramel cremeux, gianduja pretzel crunch, chocolate cookie.',
-    flavor: 'Bright Amalfi lemon, brown butter, vanilla bean, toasted egg white.',
-    technique: 'glazing',
-    gallery: [imgTake5_2]
   },
   {
     id: 'pbj-chocolate',
@@ -96,12 +86,126 @@ export const projects: Project[] = [
     gallery: [imgPbjChoc2]
   },
   {
+    id: 'earl-grey-pinwheel-cookies',
+    title: 'Earl Grey Pinwheel Cookies',
+    category: 'Cookies',
+    image: imgEarlGreyCookie,
+    description: 'Buttery Earl Grey cookie with colorful spirals including freeze dried blueberry powder, premium earl grey tea leaves, and orange zest cookie.',
+    gallery: [imgEarlGreyCookie2, imgEarlGreyCookie3, imgEarlGreyCookie4]
+  },
+  {
+    id: 'smores-dessert',
+    title: 'S’mores Dessert',
+    category: 'Plated dessert',
+    image: imgSmoresDessert,
+    description: 'Chocolate truffle lava beignet, smoked milk chocolate Bailey\'s cremeux, graham sable sticks, graham cracker ice cream, torched vanilla marshmallow meringue rose, white chocolate flame decor.',
+    gallery: [imgSmoresDessert2, imgSmoresDessert3, imgSmoresDessert4, imgSmoresDessert5, imgSmoresDessert6]
+  },
+  {
+    id: 'baguette',
+    title: 'Baguette',
+    category: 'Breads',
+    image: imgBaguette,
+    description: 'Poolish baguette with 5% rye flour.',
+    gallery: []
+  },
+  {
+    id: 'vintage-style-cake',
+    title: 'Vintage style cake',
+    category: 'Cakes',
+    image: imgVintageCake,
+    description: 'Vanilla cake, lemon curd filling, piped vanilla buttercream.',
+    gallery: [imgVintageCake2]
+  },
+  {
     id: 'assorted-chocolates',
     title: 'Assorted Chocolates',
     category: 'Chocolate and Confections',
     image: imgChocolates,
     description: 'JFB’s (almond, cherry, dark chocolate), raspberry caramels, liquor cordials, passion vanillas.',
     technique: 'Chocolate tempering and dipping',
+    gallery: []
+  },
+  {
+    id: 'take-5-entrement',
+    title: '“Take 5” Entrement',
+    category: 'Cakes',
+    image: imgTake5,
+    description: 'Peanut Butter mousse, chocolate flourless cake, toasted peanuts, caramel cremeux, gianduja pretzel crunch, chocolate cookie.',
+    flavor: 'Bright Amalfi lemon, brown butter, vanilla bean, toasted egg white.',
+    technique: 'glazing',
+    gallery: [imgTake5_2]
+  },
+  {
+    id: 'chocolate-buttermilk-cake',
+    title: 'Chocolate Buttermilk Cake',
+    category: 'Cakes',
+    image: imgButtermilkCake,
+    description: 'Six layered chocolate cake with chocolate buttercream and dark chocolate ganache filling. Glazed with ganache and decorated with crispy pearls.',
+    gallery: []
+  },
+  {
+    id: 'blood-orange-ginger-flower',
+    title: 'Blood Orange Ginger Flower',
+    category: 'Individual Dessert',
+    image: imgGrapefruitIpp,
+    description: 'Honey ginger cake, ginger cremeux, blood orange mousse, blood orange pearls, white chocolate flower, red chocolate spray.',
+    gallery: []
+  },
+  {
+    id: 'lemon-poppyseed-pound-cake',
+    title: 'Lemon poppyseed Pound Cake',
+    category: 'Cakes',
+    image: imgLemonPoppy,
+    description: 'Bright lemon poppy seed pound cake, sweet glaze, candied lemon slices, blue cornflowers.',
+    gallery: []
+  },
+  {
+    id: 'jewel-bar',
+    title: 'Jewel Bar',
+    category: 'Chocolates and Confections',
+    image: imgJewelBar,
+    description: 'Hand tempered 70% dark chocolate studded with candied orange peel, dried cherry, freeze dried raspberry, candied violet petals, dried blueberries, crispy pearls.',
+    gallery: []
+  },
+  {
+    id: 'brioche-rolls',
+    title: 'Brioche rolls',
+    category: 'Breads',
+    image: imgRolls,
+    description: 'Buttery brioche rolls.',
+    gallery: []
+  },
+  {
+    id: 'floral-birthday-cake',
+    title: 'Floral birthday cake',
+    category: 'Cakes',
+    image: imgFlowerCake,
+    description: 'Delicate vanilla cake, chocolate ganache filling, piped vanilla buttercream floral arrangement.',
+    gallery: [imgFlowerCake2]
+  },
+  {
+    id: 'strawberry-matcha-cake',
+    title: 'Strawberry Matcha Cake',
+    category: 'Cakes',
+    image: imgStrawbMatcha,
+    description: 'Premium grade matcha, strawberry compote filling, stabilized strawberry whipped cream.',
+    gallery: [imgStrawbMatcha2]
+  },
+  {
+    id: 'almond-biscotti',
+    title: 'Almond Biscotti',
+    category: 'Cookies',
+    image: imgBiscotti,
+    description: 'Traditional twice baked almond biscotti dipped in dark chocolate.',
+    gallery: [imgBiscotti2]
+  },
+  {
+    id: 'carrot-cake',
+    title: 'Carrot Cake',
+    category: 'Cakes',
+    image: imgCarrotCake,
+    description: 'Cinnamon carrot cake with walnuts, cream cheese frosting, dark chocolate drizzle, marzipan carrot decor.',
     gallery: []
   },
   {
@@ -120,110 +224,6 @@ export const projects: Project[] = [
     image: imgHazelnutTruffle,
     description: 'Milk chocolate, hazelnut praline, buckwheat honey, dipped in dark chocolate topped with toasted hazelnut.',
     technique: 'Chocolate tempering and dipping',
-    gallery: []
-  },
-  {
-    id: 'earl-grey-pinwheel-cookies',
-    title: 'Earl Grey Pinwheel Cookies',
-    category: 'Cookies',
-    image: imgEarlGreyCookie,
-    description: 'Buttery Earl Grey cookie with colorful spirals including freeze dried blueberry powder, premium earl grey tea leaves, and orange zest cookie.',
-    gallery: [imgEarlGreyCookie2, imgEarlGreyCookie3, imgEarlGreyCookie4]
-  },
-  {
-    id: 'almond-biscotti',
-    title: 'Almond Biscotti',
-    category: 'Cookies',
-    image: imgBiscotti,
-    description: 'Traditional twice baked almond biscotti dipped in dark chocolate.',
-    gallery: [imgBiscotti2]
-  },
-  {
-    id: 'chocolate-buttermilk-cake',
-    title: 'Chocolate Buttermilk Cake',
-    category: 'Cakes',
-    image: imgButtermilkCake,
-    description: 'Six layered chocolate cake with chocolate buttercream and dark chocolate ganache filling. Glazed with ganache and decorated with crispy pearls.',
-    gallery: []
-  },
-  {
-    id: 'smores-dessert',
-    title: 'S’mores Dessert',
-    category: 'Plated dessert',
-    image: imgSmoresDessert,
-    description: 'Chocolate truffle lava beignet, smoked milk chocolate Bailey\'s cremeux, graham sable sticks, graham cracker ice cream, torched vanilla marshmallow meringue rose, white chocolate flame decor.',
-    gallery: [imgSmoresDessert2, imgSmoresDessert3, imgSmoresDessert4, imgSmoresDessert5, imgSmoresDessert6]
-  },
-  {
-    id: 'strawberry-matcha-cake',
-    title: 'Strawberry Matcha Cake',
-    category: 'Cakes',
-    image: imgStrawbMatcha,
-    description: 'Premium grade matcha, strawberry compote filling, stabilized strawberry whipped cream.',
-    gallery: [imgStrawbMatcha2]
-  },
-  {
-    id: 'carrot-cake',
-    title: 'Carrot Cake',
-    category: 'Cakes',
-    image: imgCarrotCake,
-    description: 'Cinnamon carrot cake with walnuts, cream cheese frosting, dark chocolate drizzle, marzipan carrot decor.',
-    gallery: []
-  },
-  {
-    id: 'blood-orange-ginger-flower',
-    title: 'Blood Orange Ginger Flower',
-    category: 'Individual Dessert',
-    image: imgGrapefruitIpp,
-    description: 'Honey ginger cake, ginger cremeux, blood orange mousse, blood orange pearls, white chocolate flower, red chocolate spray.',
-    gallery: []
-  },
-  {
-    id: 'vintage-style-cake',
-    title: 'Vintage style cake',
-    category: 'Cakes',
-    image: imgVintageCake,
-    description: 'Vanilla cake, lemon curd filling, piped vanilla buttercream.',
-    gallery: [imgVintageCake2]
-  },
-  {
-    id: 'floral-birthday-cake',
-    title: 'Floral birthday cake',
-    category: 'Cakes',
-    image: imgFlowerCake,
-    description: 'Delicate vanilla cake, chocolate ganache filling, piped vanilla buttercream floral arrangement.',
-    gallery: [imgFlowerCake2]
-  },
-  {
-    id: 'lemon-poppyseed-pound-cake',
-    title: 'Lemon poppyseed Pound Cake',
-    category: 'Cakes',
-    image: imgLemonPoppy,
-    description: 'Bright lemon poppy seed pound cake, sweet glaze, candied lemon slices, blue cornflowers.',
-    gallery: []
-  },
-  {
-    id: 'brioche-rolls',
-    title: 'Brioche rolls',
-    category: 'Breads',
-    image: imgRolls,
-    description: 'Buttery brioche rolls.',
-    gallery: []
-  },
-  {
-    id: 'baguette',
-    title: 'Baguette',
-    category: 'Breads',
-    image: imgBaguette,
-    description: 'Poolish baguette with 5% rye flour.',
-    gallery: []
-  },
-  {
-    id: 'jewel-bar',
-    title: 'Jewel Bar',
-    category: 'Chocolates and Confections',
-    image: imgJewelBar,
-    description: 'Hand tempered 70% dark chocolate studded with candied orange peel, dried cherry, freeze dried raspberry, candied violet petals, dried blueberries, crispy pearls.',
     gallery: []
   }
 ];

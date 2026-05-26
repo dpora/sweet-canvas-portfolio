@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Send, ChevronLeft, ChevronRight, Linkedin } from "lucide-react";
 import headshotImg from "@/assets/headshot.jpg";
+import resumePdf from "@/assets/Jen_Whyte_Resume_QR.pdf";
 import { projects, type Project } from "@/components/portfolio/projects";
 import { ProjectDialog } from "@/components/portfolio/ProjectDialog";
 
@@ -170,6 +171,14 @@ function Index() {
               className="shrink-0 size-8 bg-muted text-foreground flex items-center justify-center rounded-full hover:bg-accent hover:text-foreground transition-colors"
             >
               <Linkedin className="size-4" />
+            </a>
+            <a
+              href={resumePdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="shrink-0 inline-flex items-center gap-2 bg-foreground text-background px-4 py-1.5 rounded-full text-[10px] uppercase tracking-[0.2em] hover:bg-accent hover:text-foreground transition-colors"
+            >
+              Resume
             </a>
             <button
               type="button"
